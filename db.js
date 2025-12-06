@@ -1,31 +1,28 @@
+require('dotenv').config();
 const mysql = require('mysql2/promise');
-
-const DB_HOST = process.env.DB_HOST;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
 
 let pool;
 
 async function initDb() {
-  pool = mysql.createPool({
-    host: DB_HOST,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-    charset: 'utf8',
-    ssl: { rejectUnauthorized: false }
-  });
-  console.log("✅ Conexión con la base de datos establecida");
-}
-
-function getPool() {
-  if (!pool) throw new Error("DB no inicializada");
+  if (!pool) {
+    pool = await mysql.createPool({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT
+    });
+  }
   return pool;
 }
 
+
+function getPool() {
+  return pool;
+}
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_USER:", process.env.DB_USER);
+
 module.exports = { initDb, getPool };
+
 
