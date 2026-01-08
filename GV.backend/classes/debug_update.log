@@ -1,0 +1,169 @@
+Array
+(
+    [params] => Array
+        (
+            [contenido] => # asd
+
+Contenido vacíoasdasd
+        )
+
+    [_POST] => Array
+        (
+            [contenido] => # asd
+
+Contenido vacíoasdasd
+        )
+
+    [method] => POST
+    [uri] => /vecorta.api.external/GV.backend/Test/UpdateSubItem/4
+)
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacíoasdasd
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+asdasdasdasd
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+asdasdasdasd
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+
+zxczxczxczxczxcz
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+
+zxczxczxczxczxcz![imagen](/GV.frontend/ImagenesGuias/img1.jpg)
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+
+
+
+
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+
+![imagen](/GV.frontend/ImagenesGuias/img2.jpg)
+
+
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+
+asdasdasddddddddddddddddd
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # abri
+
+Contenido vacío abri
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [nombre] => lokuraaaa
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+__Contenido vacío__
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => __# asd__
+
+__Contenido vacío__
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => __# asd__
+
+__Contenido vacío__
+
+
+Holaaaaa chatttttt
+)
+
+ENTRO A UpdateSubItem
+PARAMS:
+Array
+(
+    [contenido] => # asd
+
+Contenido vacío
+assssssssssssssdadasd
+)
+
