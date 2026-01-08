@@ -1,0 +1,612 @@
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ---------- ESTILOS GENERALES ---------- */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- CONTENEDOR PRINCIPAL ---------- */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    width: 250px;
+    background: #202c33;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+/* contenedor de cada sección */
+.menu-section {
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+/* el ve-desplegable / header (botones a la derecha) */
+.icons-section {
+    display: flex;
+    gap: 6px;
+    margin-left: 20px;
+    align-items: center;
+}
+
+/* botones del header: + y tacho */
+.btn-add-sub,
+.btn-delete-section,
+.btn-edit-section  {
+    background: none;
+    border: none; 
+    cursor: pointer;
+    font-size: 1.05rem;
+    padding: 4px 6px;
+    color: #fff;
+    border-radius: 6px;
+    transition: color .15s, background .15s;
+}
+
+/* hover normal */
+.btn-add-sub:hover {
+    color: #00d6a0;
+    background: rgba(0, 214, 160, 0.06);
+}
+
+.btn-delete-section:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.06);
+}
+
+/* contenedor donde van los subitems (slot="content") */
+.subitems-container {
+    margin-top: 8px;
+    padding-left: 8px;
+}
+
+/* cada subitem individual */
+.subitem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background .12s, color .12s;
+    color: #fff;
+}
+
+/* hover del subitem */
+.subitem:hover {
+    background: rgba(18,140,126,0.12);
+    color: #00d6a0;
+}
+
+/* texto del subitem */
+.subitem-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 8px;
+}
+
+/* iconos a la derecha del subitem (editar / borrar) */
+.subitem-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.btn-edit-sub,
+.btn-delete-sub {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 4px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+}
+
+.btn-edit-sub:hover { color:#00d6a0; background: rgba(255,209,102,0.06); }
+.btn-delete-sub:hover { color: #ff6b6b; background: rgba(255,107,107,0.06); }
+
+/* ---------- MAIN ---------- */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #111;
+}
+
+#editBtn {
+    background: #128C7E;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#editBtn:hover {
+    background: #075e54;
+}
+
+/* ---------- EDITOR ---------- */
+#editorContainer {
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#editorContainer input[type="text"] {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 8px 10px;
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+    margin-bottom: 10px;
+    transition: border-color 0.2s ease;
+}
+
+#editorContainer input[type="text"]:focus {
+    outline: none;
+    border-color: #128C7E;
+}
+
+#editorContainer::after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #ccc;
+    margin: 10px 0;
+    opacity: 0.7;
+}
+
+.toolbar {
+    position: relative;
+    gap: 8px;
+    margin-bottom: 10px;
+    background: #e9ecef;
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 20;
+}
+
+.toolbar button {
+    position: relative;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    z-index: 30;
+}
+
+.toolbar button:hover {
+    background: #dfe6e9;
+}
+
+textarea#editor {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    font-family: monospace;
+    border: none;
+    border-top: 2px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    padding: 10px;
+    resize: vertical;
+    background: #fff;
+    transition: border-color 0.2s ease;
+    z-index: 1;
+}
+
+textarea#editor:focus {
+    outline: none;
+    border-color: #128C7E;
+}
+
+/* ---------- PREVIEW ---------- */
+.preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    pointer-events: none;
+    
+}
+
+.preview h2 {
+    color: #075e54;
+}
+
+.preview a {
+    color: #128C7E;
+    text-decoration: none;
+}
+
+.preview a:hover {
+    text-decoration: underline;
+}
+
+.placeholder {
+    color: #666;
+}
+
+/* ---------- NUEVO COMPONENTE ve-desplegable ---------- */
+ve-desplegable {
+    display: block;
+    background: #263238;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.ve-desp {
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    transition: all .25s ease;
+    display: grid;
+    grid-template-rows: max-content 0fr;
+    min-height: 0;
+}
+
+.ve-desp.expanded {
+    grid-template-rows: max-content 1fr;
+    padding-bottom: 10px;
+}
+
+.ve-desp-head {
+    display: flex;
+    justify-content: space-between;;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 8px;
+}
+
+.ve-desp-title {
+    margin: 0;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
+    /* AGREGAR ESTO: */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.ve-desp-head-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ve-desp-head-right button {
+    background: #2f3d46;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.ve-desp-head-right button:hover {
+    background: #3f4f58;
+}
+
+/* BODY */
+.ve-desp-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+
+
+
+/* LINKS */
+ve-desplegable a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+ve-desplegable a:hover {
+    background: rgba(0, 214, 160, 0.15);
+    color: #00d6a0;
+}
+
+ve-desplegable a.active {
+    background: #128C7E;
+}
+
+/* SUBITEMS */
+.subitem-row {
+    background: #26333c;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subitem-icons i {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.subitem-icons i:hover {
+    color: #ccc;
+}
+
+/* ---------- DRAG & DROP ---------- */
+.drop-zone {
+    margin-top: 10px;
+    padding: 20px;
+    border: 2px dashed #128C7E;
+    border-radius: 10px;
+    background: #f1fdf9;
+    text-align: center;
+    color: #128C7E;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.drop-zone.dragover {
+    background: #d1f7ec;
+    border-color: #00c389;
+}
+
+/* ---------- POPUP ---------- */
+.popup-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+/* 🔥 POPUP BASE MÁS GRANDE */
+.popup-box {
+    background: #ffffff;
+    padding: 28px;
+    width: 600px;
+    max-width: 95%;
+    max-height: 85vh;
+    overflow: hidden;
+
+    border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    animation: popupFade .22s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Animación */
+@keyframes popupFade {
+    from { opacity: 0; transform: translateY(10px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 🔤 TÍTULO */
+.popup-box h3 {
+    margin: 0 0 10px 0;
+    color: #222;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* TEXTO */
+.popup-box p {
+    margin: 0 0 10px 0;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+/* INPUT */
+#popupInput {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1.05rem;
+    box-sizing: border-box;
+}
+
+/* BOTONES */
+.popup-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.popup-btns button {
+    padding: 12px 22px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.popup-btns button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+#popupCancel {
+    background: #e0e0e0;
+    color: #111;
+}
+
+#popupOk {
+    background: #128C7E;
+    color: white;
+}
+
+/* ---------- IMÁGENES ---------- */
+.popup-images {
+    margin-top: 16px;
+    flex: 1;
+    overflow-y: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+    gap: 14px;
+}
+
+/* ITEM */
+.popup-img-item {
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* IMG */
+.popup-img-item img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.popup-img-item img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* CARPETA */
+.popup-folder {
+    font-size: 52px;
+}
+
+
+
+
+/* ---------- FIX FINAL — evita el hover gris del componente ---------- */
+.ve-desp-head-right .btn-add-sub,
+.ve-desp-head-right .btn-delete-section {
+    background: none !important;
+}
+
+.ve-desp-head-right .btn-add-sub:hover {
+    color: #00d6a0 !important;
+    background: rgba(0, 214, 160, 0.06) !important;
+}
+
+.ve-desp-head-right .btn-delete-section:hover {
+    color: #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.06) !important;
+}
+
+#saveBtn {
+    background: #128C7E;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#saveBtn:hover {
+    background: #075e54;
+}
+
+#cancelBtn {
+    background: #128C7E;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#cancelBtn:hover {
+    background: #ff6b6b;
+}
+
+.toolbar-select {
+    background: #fff;
+    color: #000000;
+    border: 1px solid #dbdbdb;
+    padding: 4px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+

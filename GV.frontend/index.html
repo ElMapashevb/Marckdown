@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Soporte Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script type="module" src="./components/Ve-desplegable.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2 id="sidebar-title" style="cursor:pointer;">Ayuda 
+                <i id="btn-add" class="fa-solid fa-square-plus" style="cursor:pointer;"></i>
+            </h2>
+            <ul id="menu-list"></ul>
+        </nav>  
+
+        <main class="main">
+            <div class="header">
+                <h1 id="title">Centro de ayuda</h1>
+                <div class="editor-buttons">
+                    <button id="editBtn" style="display:none;">Editar</button>
+                    <button id="saveBtn" style="display:none;">Guardar</button>
+                    <button id="cancelBtn" style="display:none;">Cancelar</button>
+                </div>
+            </div>
+
+            <div class="content" id="editorContainer" style="display:none;">
+                <p>Escribí tu texto en <strong>Markdown</strong> (como en Trello):</p>
+
+                <div id="toolbar" class="toolbar">
+                    <select id="btnHeading" class="toolbar-select">
+                        <option value="">Título</option>
+                        <option value="# ">H1</option>
+                        <option value="## ">H2</option>
+                        <option value="### ">H3</option>
+                        <option value="#### ">H4</option>
+                        <option value="##### ">H5</option>
+                        <option value="###### ">H6</option>
+                    </select>
+                    <button id="btnBold" data-action="bold" title="Negrita (Ctrl+B)">
+                        <i class="fa-solid fa-bold"></i>
+                    </button>
+                    <button id="btnItalic" data-action="italic" title="Itálica (Ctrl+I)">
+                        <i class="fa-solid fa-italic"></i>
+                    </button>
+                    <button id="btnUnderline" data-action="underline" title="Subrayado">
+                        <i class="fa-solid fa-underline"></i>
+                    </button>
+                    <button id="btnList" data-action="list" title="Lista">
+                        <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button id="btnLine" data-action="line" title="Línea divisoria">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button id="btnImage" type="button" data-action="image">
+                        <i class="fa-solid fa-image"></i>
+                    </button>
+                </div>
+
+
+                <textarea id="editor"></textarea>
+            </div>
+
+            <div class="preview" id="preview">
+                <p style="color:#666;">Agregá una nueva opción con el botón ➕ para comenzar.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- POPUP GLOBAL -->
+    <div id="popupGlobal" class="popup-bg" style="display:none;">
+        <div class="popup-box popup-anim">
+            <h3 id="popupTitle"></h3>
+            <p id="popupMessage" style="margin-bottom:15px;"></p>
+
+            <input type="text" id="popupInput" style="display:none;" placeholder="Escribí aquí...">
+            <div id="popupCustomContent" style="display:none;"></div>
+
+            <div class="popup-btns">
+                <button id="popupCancel">Cancelar</button>
+                <button id="popupOk">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
